@@ -3,7 +3,7 @@
         "name": "grpcbin-policy",
         "template": {
             "name": "POLICY_TEMPLATE_NGINX_BASE"
-        },
+        }
         "grpc-profiles": [
             {
                 "name": "grpcbin-profile",
