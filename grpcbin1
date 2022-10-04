@@ -1,0 +1,60 @@
+{
+    "policy": {
+        "name": "grpcbin-policy",
+        "template": {
+            "name": "POLICY_TEMPLATE_NGINX_BASE"
+        },
+        "grpc-profiles": [
+            {
+                "name": "grpcbin-profile",
+                "associateUrls": true,
+                "defenseAttributes": {
+                    "maximumDataLength": 100000,
+                    "allowUnknownFields": false
+                },
+                "attackSignaturesCheck": true,
+                "metacharCheck": true,
+                "idlFiles": [
+                    {
+                        "idlFile": {
+                            "$ref": "file:///grpcbin1.proto"
+                        },
+                        "isPrimary": true
+                    }
+                ]
+            }
+        ],
+        "urls": [
+            {
+                "name": "*",
+                "type": "wildcard",
+                "method": "*",
+                "$action": "delete"
+            }
+        ],
+        "signature-sets": [
+            {
+                 "name": "All Signatures",
+                 "block": true,
+                 "alarm": true
+            }
+        ],
+        "blocking-settings": {
+           "violations": [
+               {
+                   "name": "VIOL_PARAMETER_VALUE_METACHAR",
+                   "alarm": true,
+                   "block": true
+               }
+           ]
+       },
+        "parameters": [
+            {
+                "name": "f_string",
+                "parameterLocation": "any",
+                "valueType": "auto-detect",
+                "type": "explicit"
+            }
+        ]
+    }
+}
