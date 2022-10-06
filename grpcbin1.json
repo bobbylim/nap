@@ -1,6 +1,7 @@
 {,
     "policy": {
         "name": "grpcbin-policy",
+        "enforcementMode": "transparent",
         "template": {
             "name": "POLICY_TEMPLATE_NGINX_BASE"
         },
