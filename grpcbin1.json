@@ -1,4 +1,4 @@
-{'
+{
     "policy": {
         "name": "grpcbin-policy",
         "enforcementMode": "blocking",
